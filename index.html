@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Bubbler+One&family=Madimi+One&display=swap"
       rel="stylesheet"
     />
-
+    <!-- <link rel="stylesheet" href="custom-bulma.scss"> -->
     <link rel="stylesheet" href="index.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,51 +19,62 @@
   </head>
   <body>
     <header>
-    <div id="profile-div">
-      <img src="images/ewa.png" alt="hundpsykologen" id="profile-pic">
-        <p id="profile-p">-Jag hjälper dig och din hund att hitta harmonin tillsammans!</p>
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="nav navbar-brand">
+          <a class="navbar-item" href="index.html">
+            <img src="/images/hund3.png" alt="" />
+          </a>
+          <a
+            role="button"
+            class="navbar-burger"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarBasicExample"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+              <a class="navbar-item" href="/index.html">Startsida</a>
 
-    </div>
-      <div id="headline-container">
-        <img src="/images/hund3.png" alt="" />
-        <h1 class="headerH">Tant Ewas hundar</h1>
-        <h2 class="headerH">Hundpsykologi och träning.</h2>
-        <p id="headerP">Trygga lösningar för din hunds behov</p>
-      </div>
-      <div></div>
-      <nav>
-        <a href="/index.html"> Startsida</a>
-        <a href="/aboutUs.html"> Om Tant Ewas hundar</a>
-        <a href="/products.html"> Tjänster och produkter</a>
+              <a class="navbar-item" href="/aboutUs.html">Om oss hundar</a>
+              <a class="navbar-item" href="/products.html"
+                >Tjänster och produkter</a
+              >
+            </div>
+          </div>
+        </div>
       </nav>
     </header>
-    <main>
 
-        <p>
-          Ett par citat eller korta recensioner från tidigare kunder som lyfter
-          fram framgångar och positiva upplevelser, kankse kan snurra med jämna
-          mellanrum
-        </p>
-        <blockquote>
-          <p>
-            "Tack vare hjälpen har min hund blivit lugnare och vi har en mycket
-            bättre relation!"
+    <main class="m-6">
+      <div class="columns">
+        <div class="column is-one-third has-text-centered">
+          <figure class="image is-128x128 is-inline-block">
+            <img class="is-rounded" src="images/ewa.png" alt="hundpsykologen" />
+          </figure>
+          <p class="is-italic mt-3">
+            - Jag hjälper dig och din hund att hitta harmonin tillsammans!
           </p>
-          <cite>- Anna och Max</cite>
-        </blockquote>
-        <blockquote>
-          <p>"Fantastisk träning! Rekommenderas varmt till alla hundägare."</p>
-          <cite>- Johan och Bella</cite>
-        </blockquote>
+        </div>
+        <div class="column is-two-thirds">
+          <h1 class="title is-1 has-text-dark">Tant Ewas hundar</h1>
+          <h2 class="subtitle is-3 has-text-dark">Hundpsykologi och träning</h2>
+          <p class="has-text-weight-bold">
+            Trygga lösningar för din hunds behov
+          </p>
+        </div>
       </div>
+      <div id="reviewsContainer"></div>
     </main>
+
     <footer>
-      <div class="container">
-        <p>
-          Följ oss på <a href="#">Instagram</a> och <a href="#">Facebook</a>.
-        </p>
-        <p>&copy; 2025 Tant Ewas hundar i sammarbete med TB Tech & Design</p>
-      </div>
+      <p>Följ oss på <a href="#">Instagram</a> och <a href="#">Facebook</a>.</p>
+      <p>&copy; 2025 Tant Ewas hundar i samarbete med TB Tech & Design</p>
     </footer>
+
+    <script src="index.js"></script>
   </body>
 </html>
