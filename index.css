@@ -32,6 +32,7 @@ h2 {
 .headlineP {
   font-family: "Bubbler One", serif;
   font-size: 1.5em;
+  text-align: center;
 }
 
 p {
@@ -77,6 +78,11 @@ a:hover {
   opacity: 0;
 }
 
+#about-dog {
+  /* width: auto; */
+  max-height: 400px;
+}
+
 #submitBtn {
   background-color: #b5c9e6;
 }
@@ -103,7 +109,7 @@ a:hover {
 .product-box:hover {
   background-color: #b5c9e6;
   transform: scale(1.05);
-  
+
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -114,7 +120,6 @@ a:hover {
 
 .service-info,
 .product-info {
-  text-align: left;
   font-size: 1rem;
   color: #0f0f0f;
 }
@@ -130,4 +135,17 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+@media (min-width: 1060px) {
+  .show-img, .about-p {
+    align-self: center;
+  }
+  .show-img img:nth-child(1) {
+    max-height: 550px;
+    width: auto;
+  }
+  .show-img img:nth-child(2) {
+    display: none;
+  }
 }
