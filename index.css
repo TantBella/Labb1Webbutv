@@ -49,6 +49,43 @@ a:hover {
   font-weight: 700;
 }
 
+.profile-image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-image,
+.hover-image {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+}
+
+.hover-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.profile-image-container:hover .hover-image {
+  opacity: 1;
+}
+
+.profile-image-container:hover .profile-image {
+  opacity: 0;
+}
+
+#submitBtn {
+  background-color: #b5c9e6;
+}
+
+#submitBtn:hover {
+  background-color: #cdcde6;
+  font-weight: bold;
+}
+
 .service-box,
 .product-box {
   height: 95%;
@@ -58,13 +95,15 @@ a:hover {
   align-items: center;
   border: 1px solid #a4b7c4;
   background-color: #fcfcfc;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.4s, box-shadow 0.4s;
   overflow-wrap: break-word;
 }
 
 .service-box:hover,
 .product-box:hover {
+  background-color: #b5c9e6;
   transform: scale(1.05);
+  
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -77,11 +116,11 @@ a:hover {
 .product-info {
   text-align: left;
   font-size: 1rem;
-  color: #555;
+  color: #0f0f0f;
 }
 
 .product-image {
-    max-width: 40%;
+  max-width: 40%;
   margin: 1rem;
 }
 

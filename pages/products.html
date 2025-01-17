@@ -11,11 +11,10 @@
       href="https://fonts.googleapis.com/css2?family=Bubbler+One&family=Madimi+One&display=swap"
       rel="stylesheet"
     />
-    <!-- <link rel="stylesheet" href="custom-bulma.scss"> -->
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="../index.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tant Ewas hundar</title>
+    <title>Produkter och tjänster</title>
   </head>
 
   <body>
@@ -38,12 +37,11 @@
           </a>
           <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-              <a class="navbar-item" href="/index.html">Startsida</a>
-
-              <a class="navbar-item" href="/aboutUs.html">Om oss </a>
-              <a class="navbar-item" href="/products.html"
+              <a class="navbar-item" href="./index.html">Startsida</a>
+              <a class="navbar-item" href="./products.html"
                 >Produkter och tjänster</a
               >
+              <a class="navbar-item" href="./aboutUs.html">Om oss </a>
             </div>
           </div>
         </div>
@@ -51,28 +49,11 @@
     </header>
 
     <main class="m-4">
-      <div class="columns">
-        <div class="column is-one-third has-text-centered">
-          <figure class="image is-128x128 is-inline-block">
-            <img class="is-rounded" src="images/ewa.png" alt="hundpsykologen" />
-          </figure>
-          <p class="is-italic mt-3">
-            - Jag hjälper dig och din hund att hitta harmonin tillsammans!
-          </p>
-        </div>
-        <div class="column is-two-thirds">
-          <h1 class="title is-1 has-text-dark">Tant Ewas hundar</h1>
-          <h2 class="subtitle is-3 has-text-dark">Hundpsykologi och träning</h2>
-          <p class="has-text-weight-bold headlineP">
-            Trygga lösningar för din hunds behov
-          </p>
-        </div>
-      </div>
-      <div class="box">
-        <h2 class="has-text-weight-bold headlineP mb-2">
-          Recensioner från tidigare kunder:
-        </h2>
-        <div id="reviewsContainer"></div>
+      <h1 class="title">Produkter och tjänster</h1>
+      <div>
+        <div id="servicesContainer"></div>
+
+        <div id="productsContainer"></div>
       </div>
     </main>
 
@@ -81,7 +62,7 @@
       <p>&copy; 2025 Tant Ewas hundar i samarbete med TB Tech & Design</p>
     </footer>
 
-    <script src="navBar.js"></script>
-    <script src="index.js"></script>
+    <script src="../js/navBar.js"></script>
+    <script src="../js/site.js"></script>
   </body>
 </html>
