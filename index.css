@@ -34,7 +34,7 @@ h2 {
   font-size: 1.5em;
 }
 
-p{
+p {
   text-align: left;
   margin: 0.5em;
 }
@@ -49,12 +49,46 @@ a:hover {
   font-weight: 700;
 }
 
+.service-box,
+.product-box {
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #a4b7c4;
+  background-color: #fcfcfc;
+  transition: transform 0.2s, box-shadow 0.2s;
+  overflow-wrap: break-word;
+}
+
+.service-box:hover,
+.product-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.service-title,
+.product-title {
+  font-weight: bold;
+}
+
+.service-info,
+.product-info {
+  text-align: left;
+  font-size: 1rem;
+  color: #555;
+}
+
+.product-image {
+    max-width: 40%;
+  margin: 1rem;
+}
+
 footer {
-  /* position: absolute;
-  bottom: 0; */
   width: 100%;
   padding: 1rem;
-display: flex;
-flex-direction: column;
-align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

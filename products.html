@@ -1,34 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bubbler+One&family=Madimi+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Produkter och tjänster</title>
   </head>
+
   <body>
     <header>
-      <h1>Trygga lösningar för din hunds behov – Hundpsykologi och träning</h1>
-      <p>Jag hjälper dig och din hund att hitta harmonin tillsammans</p>
-      <nav>
-        <a href="/index.html"> Startsida</a>
-        <a href="/aboutUs.html"> Om Tant Ewas hundar</a>
-        <a href="/products.html"> Tjänster och produkter</a>
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="nav navbar-brand">
+          <a class="navbar-item" href="index.html">
+            <img src="/images/hund3.png" alt="" />
+          </a>
+          <a
+            role="button"
+            class="navbar-burger"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarBasicExample"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+              <a class="navbar-item" href="/index.html">Startsida</a>
+
+              <a class="navbar-item" href="/aboutUs.html">Om oss </a>
+              <a class="navbar-item" href="/products.html"
+                >Produkter och tjänster</a
+              >
+            </div>
+          </div>
+        </div>
       </nav>
     </header>
-    <main>
-      <h1>tjänster och prods</h1>
-      <div id="servicesContainer"></div>
-      <div id="productsContainer"></div>
-    </main>
-    <footer>
-      <div class="container">
-        <p>&copy; 2025 Tant Ewas hundar i sammarbete med TB Tech & Design</p>
-        <p>
-          Följ oss på <a href="#">Instagram</a> och <a href="#">Facebook</a>.
-        </p>
+
+    <main class="m-4">
+      <h1 class="title">Produkter och tjänster</h1>
+      <div>
+        <div id="servicesContainer"></div>
+
+        <div id="productsContainer"></div>
       </div>
+    </main>
+
+    <footer>
+      <p>Följ oss på <a href="#">Instagram</a> och <a href="#">Facebook</a>.</p>
+      <p>&copy; 2025 Tant Ewas hundar i samarbete med TB Tech & Design</p>
     </footer>
 
+    <script src="navBar.js"></script>
     <script src="site.js"></script>
   </body>
 </html>

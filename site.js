@@ -1,35 +1,64 @@
-const services = [
-  {
-    name: "Individuell hundträning",
-    info: "Personligt anpassad träning för att möta din hunds unika behov.",
-  },
-  {
-    name: "Beteenderådgivning",
-    info: "Hjälp med problem som aggression, rädsla eller överdriven skällning.",
-  },
-  {
-    name: "Valpträning",
-    info: "Grundläggande träning och socialisering för din valp.",
-  },
-  {
-    name: "Mental aktivering",
-    info: "Vi går igenom varför, hur, var och när du bör aktivera din hund med de speciella övningar som mental aktivering innebär.",
-  },
-];
+const services = {
+  Kurser: [
+    {
+      name: "Individuell hundträning",
+      info: "Personligt anpassad träning för att möta din hunds unika behov.",
+      price: 1650,
+    },
+    {
+      name: "Beteenderådgivning",
+      info: "Hjälp med problem som aggression, rädsla eller överdriven skällning.",
+      price: 1850,
+    },
+    {
+      name: "Valpträning",
+      info: "Grundläggande träning och socialisering för din valp.",
+      price: 850,
+    },
+    {
+      name: "Agility 1",
+      info: "Vi tränar kontakt, balans & koordination med roliga övningar. På denna kursen börjar vi också lära in hopphinder, däcket, långhoppet, tunnlar och slalom.",
+      price: 1800,
+    },
+    {
+      name: "Nosework 1",
+      info: "Träning som utmanar både dig och din hund, ger er mer samarbete och glädje tillsammans.",
+      price: 1750,
+    },
+    {
+      name: "Mental aktivering",
+      info: "Vi går igenom varför, hur, var och när du bör aktivera din hund med de speciella övningar som mental aktivering innebär.",
+      price: 1650,
+    },
+  ],
+};
 
 const servicesContainer = document.getElementById("servicesContainer");
 
-services.forEach((service) => {
+const title = document.createElement("h2");
+title.textContent = "Kurser";
+title.classList.add("title", "is-4", "has-text-centered");
+servicesContainer.appendChild(title);
+
+const columns = document.createElement("div");
+columns.classList.add("columns", "is-multiline");
+
+services.Kurser.forEach((service) => {
   const serviceElement = document.createElement("div");
-  serviceElement.classList.add("service");
+  serviceElement.classList.add("column", "is-one-third");
 
   serviceElement.innerHTML = `
-    <h2>${service.name}</h2>
-    <p>${service.info}</p>
+    <div class="box service-box">
+      <h3 class="service-title">${service.name}</h3>
+      <p class="service-info">${service.info}</p>
+        <p><strong>Pris:</strong> ${service.price} kr</p>
+    </div>
   `;
 
-  servicesContainer.appendChild(serviceElement);
+  columns.appendChild(serviceElement);
 });
+
+servicesContainer.appendChild(columns);
 
 const products = {
   dogcandy: [
@@ -94,26 +123,33 @@ const products = {
   ],
 };
 
-// Hämta behållare
 const productsContainer = document.getElementById("productsContainer");
 
-// Loopar genom varje kategori och dess produkter
 Object.keys(products).forEach((category) => {
   const categoryTitle = document.createElement("h2");
-  categoryTitle.textContent = category === "dogcandy" ? "Hundgodis" : "Hundleksaker";
+  categoryTitle.textContent =
+    category === "dogcandy" ? "Hundgodis" : "Hundleksaker";
+  categoryTitle.classList.add("title", "is-4", "m-4", "has-text-centered");
   productsContainer.appendChild(categoryTitle);
+
+  const columns = document.createElement("div");
+  columns.classList.add("columns", "is-multiline");
 
   products[category].forEach((product) => {
     const productElement = document.createElement("div");
-    productElement.classList.add("product");
+    productElement.classList.add("column", "is-one-third");
 
     productElement.innerHTML = `
-      <img src="${product.image}" alt="${product.productname}" />
-      <h3>${product.productname}</h3>
-      <p>${product.productinfo}</p>
-      <p>Pris: ${product.price} kr</p>
+      <div class="box product-box">
+        <img src="${product.image}" alt="${product.productname}" class="product-image" />
+        <h3 class="product-title">${product.productname}</h3>
+        <p class="product-info">${product.productinfo}</p>
+        <p><strong>Pris:</strong> ${product.price} kr</p>
+      </div>
     `;
 
-    productsContainer.appendChild(productElement);
+    columns.appendChild(productElement);
   });
+
+  productsContainer.appendChild(columns);
 });
