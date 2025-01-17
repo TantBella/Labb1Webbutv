@@ -43,6 +43,9 @@
               >
               <a class="navbar-item" href="./aboutUs.html">Om oss </a>
             </div>
+            <div class="navbar-end">
+              <button id="cartBtn" class="navbar-item" >Kundvagn</button>
+            </div>
           </div>
         </div>
       </nav>
@@ -52,10 +55,27 @@
       <h1 class="title">Produkter och tjänster</h1>
       <div>
         <div id="servicesContainer"></div>
-
         <div id="productsContainer"></div>
       </div>
+      <!-- <div id="cartContainer" class="mt-4">
+        <h2 class="title is-4">Din kundvagn</h2>
+        <ul id="cartList"></ul>
+        <p><strong>Totalpris:</strong> <span id="totalPrice">0</span> kr</p>
+      </div> -->
     </main>
+
+    <div id="cartModal" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <div class="container">
+          <h1 class="title">Din kundvagn</h1>
+          <ul id="cartList"></ul>
+          <p><strong>Totalpris:</strong> <span id="totalPrice">0</span> kr</p>
+          <button class="button is-danger" id="closeCartBtn">Stäng</button>
+        </div>
+      </div>
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
 
     <footer>
       <p>Följ oss på <a href="#">Instagram</a> och <a href="#">Facebook</a>.</p>

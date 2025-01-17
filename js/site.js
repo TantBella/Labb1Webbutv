@@ -52,6 +52,7 @@ services.Kurser.forEach((service) => {
       <h3 class="service-title">${service.name}</h3>
       <p class="service-info">${service.info}</p>
         <p><strong>Pris:</strong> ${service.price} kr</p>
+        <button id="cartBtn" class="button is-link is-fullwidth mx-2 my-4" onclick="addToCart('${service.name}', ${service.price})">Lägg till i kundvagn</button>
     </div>
   `;
 
@@ -145,6 +146,8 @@ Object.keys(products).forEach((category) => {
         <h3 class="product-title">${product.productname}</h3>
         <p class="product-info">${product.productinfo}</p>
         <p><strong>Pris:</strong> ${product.price} kr</p>
+          <button    id="cartBtn"class="button is-link is-fullwidth mx-2 my-4" onclick="addToCart('${product.productname}', ${product.price})">Lägg till i kundvagn</button>
+
       </div>
     `;
 
@@ -152,4 +155,42 @@ Object.keys(products).forEach((category) => {
   });
 
   productsContainer.appendChild(columns);
+});
+
+const cart = [];
+const cartList = document.getElementById("cartList");
+const totalPriceElement = document.getElementById("totalPrice");
+const cartBtn = document.getElementById("cartBtn");
+const cartModal = document.getElementById("cartModal");
+const closeCartBtn = document.getElementById("closeCartBtn");
+
+function updateCart() {
+  cartList.innerHTML = "";
+  let totalPrice = 0;
+  cart.forEach((item) => {
+    const listItem = document.createElement("li");
+    listItem.textContent = `${item.name} - ${item.price} kr`;
+    cartList.appendChild(listItem);
+    totalPrice += item.price;
+  });
+  totalPriceElement.textContent = totalPrice;
+}
+
+function addToCart(name, price) {
+  cart.push({ name, price });
+  updateCart();
+}
+
+cartBtn.addEventListener("click", () => {
+  cartModal.classList.add("is-active");
+});
+
+closeCartBtn.addEventListener("click", () => {
+  cartModal.classList.remove("is-active");
+});
+
+cartModal.addEventListener("click", (e) => {
+  if (e.target === cartModal) {
+    cartModal.classList.remove("is-active");
+  }
 });

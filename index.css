@@ -79,16 +79,15 @@ a:hover {
 }
 
 #about-dog {
-  /* width: auto; */
   max-height: 400px;
 }
 
-#submitBtn {
-  background-color: #b5c9e6;
+#submitBtn, #cartBtn {
+  background-color: #cdcde6;
 }
 
-#submitBtn:hover {
-  background-color: #cdcde6;
+#submitBtn:hover, #cartBtn:hover {
+  background-color: #c7a6c8;
   font-weight: bold;
 }
 
