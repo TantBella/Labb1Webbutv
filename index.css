@@ -3,13 +3,13 @@
 }
 
 body {
-  padding: 0;
-  margin: 0 auto;
-  min-height: 100vh;
+  background-color: #fcfcfc;
   font-family: "Montserrat", "Helvetica Neue", sans-serif;
   letter-spacing: 2px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 0;
   text-align: center;
-  background-color: #fcfcfc;
 }
 
 .nav,
@@ -36,8 +36,8 @@ h2 {
 }
 
 p {
-  text-align: left;
   margin: 0.5em;
+  text-align: left;
 }
 
 a {
@@ -51,22 +51,22 @@ a:hover {
 }
 
 .profile-image-container {
-  position: relative;
   display: inline-block;
+  position: relative;
 }
 
 .profile-image,
 .hover-image {
-  width: 128px;
-  height: 128px;
   border-radius: 50%;
+  height: 128px;
+  width: 128px;
 }
 
 .hover-image {
-  position: absolute;
-  top: 0;
   left: 0;
   opacity: 0;
+  position: absolute;
+  top: 0;
   transition: opacity 0.3s ease;
 }
 
@@ -82,34 +82,35 @@ a:hover {
   max-height: 400px;
 }
 
-#submitBtn, #cartBtn {
+#submitBtn,
+#cartBtn {
   background-color: #cdcde6;
 }
 
-#submitBtn:hover, #cartBtn:hover {
+#submitBtn:hover,
+#cartBtn:hover {
   background-color: #c7a6c8;
   font-weight: bold;
 }
 
 .service-box,
 .product-box {
-  height: 95%;
+  align-items: center;
+  background-color: #fcfcfc;
+  border: 1px solid #a4b7c4;
   display: flex;
   flex-direction: column;
+  height: 95%;
   justify-content: center;
-  align-items: center;
-  border: 1px solid #a4b7c4;
-  background-color: #fcfcfc;
-  transition: transform 0.4s, box-shadow 0.4s;
   overflow-wrap: break-word;
+  transition: transform 0.4s, box-shadow 0.4s;
 }
 
 .service-box:hover,
 .product-box:hover {
   background-color: #b5c9e6;
-  transform: scale(1.05);
-
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);
 }
 
 .service-title,
@@ -117,27 +118,27 @@ a:hover {
   font-weight: bold;
 }
 
-.service-info,
+/* .service-info,
 .product-info {
-  font-size: 1rem;
   color: #0f0f0f;
-}
+} */
 
 .product-image {
-  max-width: 40%;
   margin: 1rem;
+  max-width: 40%;
 }
 
 footer {
-  width: 100%;
-  padding: 1rem;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  padding: 1rem;
+  width: 100%;
 }
 
 @media (min-width: 1060px) {
-  .show-img, .about-p {
+  .show-img,
+  .about-p {
     align-self: center;
   }
   .show-img img:nth-child(1) {

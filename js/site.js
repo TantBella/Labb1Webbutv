@@ -1,3 +1,5 @@
+// Tjänster och kurser
+
 const services = {
   Kurser: [
     {
@@ -33,36 +35,10 @@ const services = {
   ],
 };
 
-const servicesContainer = document.getElementById("servicesContainer");
-
-const title = document.createElement("h2");
-title.textContent = "Kurser";
-title.classList.add("title", "is-4", "has-text-centered");
-servicesContainer.appendChild(title);
-
-const columns = document.createElement("div");
-columns.classList.add("columns", "is-multiline");
-
-services.Kurser.forEach((service) => {
-  const serviceElement = document.createElement("div");
-  serviceElement.classList.add("column", "is-one-third");
-
-  serviceElement.innerHTML = `
-    <div class="box service-box">
-      <h3 class="service-title">${service.name}</h3>
-      <p class="service-info">${service.info}</p>
-        <p><strong>Pris:</strong> ${service.price} kr</p>
-        <button id="cartBtn" class="button is-link is-fullwidth mx-2 my-4" onclick="addToCart('${service.name}', ${service.price})">Lägg till i kundvagn</button>
-    </div>
-  `;
-
-  columns.appendChild(serviceElement);
-});
-
-servicesContainer.appendChild(columns);
+// Olika produkter
 
 const products = {
-  dogcandy: [
+  Hundgodis: [
     {
       productname: "4Dogs Belöningsgodis Hjort ca 100 g",
       productinfo: "Torkat hundgodis utan tillsatser, ursprung EU",
@@ -92,7 +68,7 @@ const products = {
         "https://www.4dogs.se/pub_images/large/Trixie-vegan-cubes-veganskt-hundgodis-med-frukt-och-gronsaker-100-g.jpg?timestamp=1736437727",
     },
   ],
-  dogtoys: [
+  Hundleksaker: [
     {
       productname: "Bistos Inca med fårskinn och gallerboll - orange",
       productinfo: "Svensktillverkad, ca 34 cm lång med expanderhandtag",
@@ -124,38 +100,175 @@ const products = {
   ],
 };
 
-const productsContainer = document.getElementById("productsContainer");
+// Funktioner för att rendera kurser och produkter
 
-Object.keys(products).forEach((category) => {
-  const categoryTitle = document.createElement("h2");
-  categoryTitle.textContent =
-    category === "dogcandy" ? "Hundgodis" : "Hundleksaker";
-  categoryTitle.classList.add("title", "is-4", "m-4", "has-text-centered");
-  productsContainer.appendChild(categoryTitle);
+const createElement = (tag, classes = [], content = "", attributes = {}) => {
+  const element = document.createElement(tag);
+  if (classes.length) element.classList.add(...classes);
+  if (content) element.textContent = content;
+  Object.entries(attributes).forEach(([key, value]) =>
+    element.setAttribute(key, value)
+  );
+  return element;
+};
 
-  const columns = document.createElement("div");
-  columns.classList.add("columns", "is-multiline");
+const createCard = ({ name, info, price, image }, type = "item") => {
+  const card = createElement("div", ["box", `${type}-box`]);
+  card.innerHTML = `
+    ${image ? `<img src="${image}" alt="${name}" class="${type}-image" />` : ""}
+    <h3 class="${type}-title">${name}</h3>
+    <p class="${type}-info">${info}</p>
+    <p><strong>Pris:</strong> ${price} kr</p>
+    <button id="cartBtn" class="button is-link is-fullwidth mx-2 my-4"
+      onclick="addToCart('${name}', ${price})">Lägg till i kundvagn</button>
+  `;
+  return card;
+};
 
-  products[category].forEach((product) => {
-    const productElement = document.createElement("div");
-    productElement.classList.add("column", "is-one-third");
+const renderSection = (containerId, titleText, items, type = "item") => {
+  const container = document.getElementById(containerId);
 
-    productElement.innerHTML = `
-      <div class="box product-box">
-        <img src="${product.image}" alt="${product.productname}" class="product-image" />
-        <h3 class="product-title">${product.productname}</h3>
-        <p class="product-info">${product.productinfo}</p>
-        <p><strong>Pris:</strong> ${product.price} kr</p>
-          <button    id="cartBtn"class="button is-link is-fullwidth mx-2 my-4" onclick="addToCart('${product.productname}', ${product.price})">Lägg till i kundvagn</button>
+  const title = createElement(
+    "h2",
+    ["title", "is-4", "has-text-centered"],
+    titleText
+  );
+  container.appendChild(title);
 
-      </div>
-    `;
+  const columns = createElement("div", ["columns", "is-multiline"]);
 
-    columns.appendChild(productElement);
+  items.forEach((item) => {
+    const column = createElement("div", ["column", "is-one-third"]);
+    column.appendChild(createCard(item, type));
+    columns.appendChild(column);
   });
 
-  productsContainer.appendChild(columns);
+  container.appendChild(columns);
+};
+
+const servicesData = services.Kurser.map((service) => ({
+  name: service.name,
+  info: service.info,
+  price: service.price,
+}));
+
+const productsData = Object.entries(products).map(([category, items]) => ({
+  category,
+  items: items.map((product) => ({
+    name: product.productname,
+    info: product.productinfo,
+    price: product.price,
+    image: product.image,
+  })),
+}));
+
+renderSection("servicesContainer", "Kurser", servicesData, "service");
+
+productsData.forEach(({ category, items }) => {
+  renderSection("productsContainer", category, items, "product");
 });
+
+// const productsContainer = document.getElementById("productsContainer");
+
+// const createElement = (tag, classes = [], content = "", attributes = {}) => {
+//   const element = document.createElement(tag);
+//   if (classes.length) element.classList.add(...classes);
+//   if (content) element.textContent = content;
+//   Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
+//   return element;
+// };
+
+// Object.entries(products).forEach(([category, items]) => {
+//   const categoryTitle = createElement(
+//     "h2",
+//     ["title", "is-4", "m-4", "has-text-centered"],
+//     category
+//   );
+//   productsContainer.appendChild(categoryTitle);
+
+//   const columns = createElement("div", ["columns", "is-multiline"]);
+
+//   items.forEach(({ image, productname, productinfo, price }) => {
+
+//     const productElement = createElement("div", ["column", "is-one-third"]);
+//     productElement.innerHTML = `
+//       <div class="box product-box">
+//         <img src="${image}" alt="${productname}" class="product-image" />
+//         <h3 class="product-title">${productname}</h3>
+//         <p class="product-info">${productinfo}</p>
+//         <p><strong>Pris:</strong> ${price} kr</p>
+//         <button id="cartBtn" class="button is-link is-fullwidth mx-2 my-4"
+//           onclick="addToCart('${productname}', ${price})">Lägg till i kundvagn</button>
+//       </div>
+//     `;
+//     columns.appendChild(productElement);
+//   });
+
+//   productsContainer.appendChild(columns);
+// });
+
+// const productsContainer = document.getElementById("productsContainer");
+
+// Object.keys(products).forEach((category) => {
+//   const categoryTitle = document.createElement("h2");
+//   categoryTitle.textContent =
+//     category === "Hundgodis" ? "Hundgodis" : "Hundleksaker";
+//   categoryTitle.classList.add("title", "is-4", "m-4", "has-text-centered");
+//   productsContainer.appendChild(categoryTitle);
+
+//   const columns = document.createElement("div");
+//   columns.classList.add("columns", "is-multiline");
+
+//   products[category].forEach((product) => {
+//     const productElement = document.createElement("div");
+//     productElement.classList.add("column", "is-one-third");
+
+//     productElement.innerHTML = `
+//       <div class="box product-box">
+//         <img src="${product.image}" alt="${product.productname}" class="product-image" />
+//         <h3 class="product-title">${product.productname}</h3>
+//         <p class="product-info">${product.productinfo}</p>
+//         <p><strong>Pris:</strong> ${product.price} kr</p>
+//           <button    id="cartBtn"class="button is-link is-fullwidth mx-2 my-4" onclick="addToCart('${product.productname}', ${product.price})">Lägg till i kundvagn</button>
+
+//       </div>
+//     `;
+
+//     columns.appendChild(productElement);
+//   });
+
+//   productsContainer.appendChild(columns);
+// });
+
+// const servicesContainer = document.getElementById("servicesContainer");
+
+// const title = document.createElement("h2");
+// title.textContent = "Kurser";
+// title.classList.add("title", "is-4", "has-text-centered");
+// servicesContainer.appendChild(title);
+
+// const columns = document.createElement("div");
+// columns.classList.add("columns", "is-multiline");
+
+// services.Kurser.forEach((service) => {
+//   const serviceElement = document.createElement("div");
+//   serviceElement.classList.add("column", "is-one-third");
+
+//   serviceElement.innerHTML = `
+//     <div class="box service-box">
+//       <h3 class="service-title">${service.name}</h3>
+//       <p class="service-info">${service.info}</p>
+//         <p><strong>Pris:</strong> ${service.price} kr</p>
+//         <button id="cartBtn" class="button is-link is-fullwidth mx-2 my-4" onclick="addToCart('${service.name}', ${service.price})">Lägg till i kundvagn</button>
+//     </div>
+//   `;
+
+//   columns.appendChild(serviceElement);
+// });
+
+// servicesContainer.appendChild(columns);
+
+// Kundvagnen
 
 const cart = [];
 const cartList = document.getElementById("cartList");
