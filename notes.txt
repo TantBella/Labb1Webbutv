@@ -1,0 +1,10 @@
+
+
+lägg till i kundvagn tom fäst i botten av sina rutor så d hamnar på samma höjd
+
+telefon oh adress på kontakt
+
+
+när något ligger i kundvagen så ska det synas p köpknappen antal och man ska kunna trycla minus eller plus för att justera abtal
+
+i kundvagnnen ska man kunna ta bort och lägga till

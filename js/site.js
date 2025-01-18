@@ -1,4 +1,4 @@
-// Tjänster och kurser
+// Tjänster och kurser:
 
 const services = {
   Kurser: [
@@ -35,7 +35,7 @@ const services = {
   ],
 };
 
-// Olika produkter
+// Olika produkter:
 
 const products = {
   Hundgodis: [
@@ -100,7 +100,7 @@ const products = {
   ],
 };
 
-// Funktioner för att rendera kurser och produkter
+// Funktioner för att rendera kurser och produkter:
 
 const createElement = (tag, classes = [], content = "", attributes = {}) => {
   const element = document.createElement(tag);
@@ -168,142 +168,61 @@ productsData.forEach(({ category, items }) => {
   renderSection("productsContainer", category, items, "product");
 });
 
-// const productsContainer = document.getElementById("productsContainer");
-
-// const createElement = (tag, classes = [], content = "", attributes = {}) => {
-//   const element = document.createElement(tag);
-//   if (classes.length) element.classList.add(...classes);
-//   if (content) element.textContent = content;
-//   Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
-//   return element;
-// };
-
-// Object.entries(products).forEach(([category, items]) => {
-//   const categoryTitle = createElement(
-//     "h2",
-//     ["title", "is-4", "m-4", "has-text-centered"],
-//     category
-//   );
-//   productsContainer.appendChild(categoryTitle);
-
-//   const columns = createElement("div", ["columns", "is-multiline"]);
-
-//   items.forEach(({ image, productname, productinfo, price }) => {
-
-//     const productElement = createElement("div", ["column", "is-one-third"]);
-//     productElement.innerHTML = `
-//       <div class="box product-box">
-//         <img src="${image}" alt="${productname}" class="product-image" />
-//         <h3 class="product-title">${productname}</h3>
-//         <p class="product-info">${productinfo}</p>
-//         <p><strong>Pris:</strong> ${price} kr</p>
-//         <button id="cartBtn" class="button is-link is-fullwidth mx-2 my-4"
-//           onclick="addToCart('${productname}', ${price})">Lägg till i kundvagn</button>
-//       </div>
-//     `;
-//     columns.appendChild(productElement);
-//   });
-
-//   productsContainer.appendChild(columns);
-// });
-
-// const productsContainer = document.getElementById("productsContainer");
-
-// Object.keys(products).forEach((category) => {
-//   const categoryTitle = document.createElement("h2");
-//   categoryTitle.textContent =
-//     category === "Hundgodis" ? "Hundgodis" : "Hundleksaker";
-//   categoryTitle.classList.add("title", "is-4", "m-4", "has-text-centered");
-//   productsContainer.appendChild(categoryTitle);
-
-//   const columns = document.createElement("div");
-//   columns.classList.add("columns", "is-multiline");
-
-//   products[category].forEach((product) => {
-//     const productElement = document.createElement("div");
-//     productElement.classList.add("column", "is-one-third");
-
-//     productElement.innerHTML = `
-//       <div class="box product-box">
-//         <img src="${product.image}" alt="${product.productname}" class="product-image" />
-//         <h3 class="product-title">${product.productname}</h3>
-//         <p class="product-info">${product.productinfo}</p>
-//         <p><strong>Pris:</strong> ${product.price} kr</p>
-//           <button    id="cartBtn"class="button is-link is-fullwidth mx-2 my-4" onclick="addToCart('${product.productname}', ${product.price})">Lägg till i kundvagn</button>
-
-//       </div>
-//     `;
-
-//     columns.appendChild(productElement);
-//   });
-
-//   productsContainer.appendChild(columns);
-// });
-
-// const servicesContainer = document.getElementById("servicesContainer");
-
-// const title = document.createElement("h2");
-// title.textContent = "Kurser";
-// title.classList.add("title", "is-4", "has-text-centered");
-// servicesContainer.appendChild(title);
-
-// const columns = document.createElement("div");
-// columns.classList.add("columns", "is-multiline");
-
-// services.Kurser.forEach((service) => {
-//   const serviceElement = document.createElement("div");
-//   serviceElement.classList.add("column", "is-one-third");
-
-//   serviceElement.innerHTML = `
-//     <div class="box service-box">
-//       <h3 class="service-title">${service.name}</h3>
-//       <p class="service-info">${service.info}</p>
-//         <p><strong>Pris:</strong> ${service.price} kr</p>
-//         <button id="cartBtn" class="button is-link is-fullwidth mx-2 my-4" onclick="addToCart('${service.name}', ${service.price})">Lägg till i kundvagn</button>
-//     </div>
-//   `;
-
-//   columns.appendChild(serviceElement);
-// });
-
-// servicesContainer.appendChild(columns);
-
-// Kundvagnen
-
+// Kundvagnen:
 const cart = [];
 const cartList = document.getElementById("cartList");
 const totalPriceElement = document.getElementById("totalPrice");
-const cartBtn = document.getElementById("cartBtn");
-const cartModal = document.getElementById("cartModal");
+const shoppingCartBtn = document.getElementById("shoppingCartBtn");
+const cartPopup = document.getElementById("cartPopup");
 const closeCartBtn = document.getElementById("closeCartBtn");
+const cartCount = document.getElementById("cartCount");
+const goToCheckoutBtn = document.getElementById("goToCheckoutBtn");
+const emptyCartMessage = document.getElementById("emptyCartMessage");
+const totalPriceContainer = document.getElementById("totalPriceContainer");
 
 function updateCart() {
   cartList.innerHTML = "";
   let totalPrice = 0;
+
   cart.forEach((item) => {
     const listItem = document.createElement("li");
     listItem.textContent = `${item.name} - ${item.price} kr`;
     cartList.appendChild(listItem);
     totalPrice += item.price;
   });
-  totalPriceElement.textContent = totalPrice;
+
+  cartCount.textContent = cart.length;
+
+  if (cart.length === 0) {
+    emptyCartMessage.style.display = "block";
+    goToCheckoutBtn.style.display = "none";
+    totalPriceContainer.style.display = "none";
+  } else {
+    emptyCartMessage.style.display = "none";
+    goToCheckoutBtn.style.display = "inline-block";
+    totalPriceContainer.style.display = "block";
+    totalPriceElement.textContent = totalPrice;
+  }
 }
+
+document.addEventListener("DOMContentLoaded", updateCart);
 
 function addToCart(name, price) {
   cart.push({ name, price });
   updateCart();
 }
 
-cartBtn.addEventListener("click", () => {
-  cartModal.classList.add("is-active");
+shoppingCartBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  cartPopup.classList.toggle("is-active");
 });
 
 closeCartBtn.addEventListener("click", () => {
-  cartModal.classList.remove("is-active");
+  cartPopup.classList.remove("is-active");
 });
 
-cartModal.addEventListener("click", (e) => {
-  if (e.target === cartModal) {
-    cartModal.classList.remove("is-active");
+document.addEventListener("click", (e) => {
+  if (!cartPopup.contains(e.target) && e.target !== shoppingCartBtn) {
+    cartPopup.classList.remove("is-active");
   }
 });

@@ -20,10 +20,71 @@
   <body>
     <header>
       <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="nav navbar-brand">
+        <div class="navbar-brand">
           <a class="navbar-item" href="index.html">
-            <img src="/images/hund3.png" alt="" />
+            <img src="/images/hund3.png" alt="Logo" />
           </a>
+
+          <div class="cart-icon-wrapper">
+            <button id="shoppingCartBtn" class="cart-icon">
+              <span class="icon m-4">
+                <img
+                  src="../images/icons/shopping_cart.png"
+                  alt="Shopping Cart"
+                />
+              </span>
+              <span id="cartCount" class="tag is-small">0</span>
+            </button>
+            <div id="cartPopup" class="cart-popup">
+              <div class="cart-popup-header">
+                <h3 class="title is-5">Din kundvagn</h3>
+              </div>
+              <ul id="cartList" class="cart-list"></ul>
+               <div id="totalPriceContainer">
+      <p>
+        <strong>Totalpris:</strong> <span id="totalPrice">0</span> kr
+      </p>
+    </div>
+              <p id="emptyCartMessage" style="display: none">
+                Kundvagnen är tom
+              </p>
+              <a
+                id="goToCheckoutBtn"
+                href="checkout.html"
+                class="button is-primary"
+                style="display: none"
+                >Gå till kassa</a
+              >
+              <button class="button is-danger" id="closeCartBtn">Stäng</button>
+            </div>
+          </div>
+
+          <!-- <div class="cart-icon-wrapper">
+            <button id="shoppingCartBtn" class="cart-icon">
+              <span class="icon m-4">
+                <img
+                  src="../images/icons/shopping_cart.png"
+                  alt="Shopping Cart"
+                />
+              </span>
+              <span id="cartCount" class="tag is-small">0</span>
+            </button>
+            <div id="cartPopup" class="cart-popup">
+              <div class="cart-popup-header">
+                <h3 class="title is-5">Din kundvagn</h3>
+              </div>
+              <ul id="cartList" class="cart-list"></ul>
+              <p>
+                <strong>Totalpris:</strong> <span id="totalPrice">0</span> kr
+              </p>
+              <p id="emptyCartMessage" style="display: none;">Kundvagnen är tom</p>
+              <a id="goToCheckoutBtn" href="checkout.html" class="button is-primary" style="display: none;">Gå till kassa</a>
+              <button class="button is-danger" id="closeCartBtn">Stäng</button>
+
+               <a href="checkout.html" class="button is-primary">Gå till kassa</a>
+              <button class="button is-danger" id="closeCartBtn">Stäng</button>
+            </div>
+          </div> -->
           <a
             role="button"
             class="navbar-burger"
@@ -35,17 +96,15 @@
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
           </a>
-          <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-              <a class="navbar-item" href="./index.html">Startsida</a>
-              <a class="navbar-item" href="./products.html"
-                >Produkter och tjänster</a
-              >
-              <a class="navbar-item" href="./aboutUs.html">Om oss </a>
-            </div>
-            <div class="navbar-end">
-              <button id="cartBtn" class="navbar-item" >Kundvagn</button>
-            </div>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="./index.html">Startsida</a>
+            <a class="navbar-item" href="./products.html"
+              >Produkter och tjänster</a
+            >
+            <a class="navbar-item" href="./aboutUs.html">Om oss</a>
           </div>
         </div>
       </nav>
@@ -57,25 +116,7 @@
         <div id="servicesContainer"></div>
         <div id="productsContainer"></div>
       </div>
-      <!-- <div id="cartContainer" class="mt-4">
-        <h2 class="title is-4">Din kundvagn</h2>
-        <ul id="cartList"></ul>
-        <p><strong>Totalpris:</strong> <span id="totalPrice">0</span> kr</p>
-      </div> -->
     </main>
-
-    <div id="cartModal" class="modal">
-      <div class="modal-background"></div>
-      <div class="modal-content">
-        <div class="container">
-          <h1 class="title">Din kundvagn</h1>
-          <ul id="cartList"></ul>
-          <p><strong>Totalpris:</strong> <span id="totalPrice">0</span> kr</p>
-          <button class="button is-danger" id="closeCartBtn">Stäng</button>
-        </div>
-      </div>
-      <button class="modal-close is-large" aria-label="close"></button>
-    </div>
 
     <footer>
       <p>Följ oss på <a href="#">Instagram</a> och <a href="#">Facebook</a>.</p>

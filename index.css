@@ -4,6 +4,7 @@
 
 body {
   background-color: #fcfcfc;
+  color: #0f0f0f;
   font-family: "Montserrat", "Helvetica Neue", sans-serif;
   letter-spacing: 2px;
   margin: 0 auto;
@@ -12,10 +13,77 @@ body {
   text-align: center;
 }
 
-.nav,
 .navbar,
 footer {
+  align-items: center;
   background-color: #a4b7c4;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.navbar-menu {
+  padding: 1rem;
+  position: absolute;
+  right: 0;
+  text-align: left;
+  z-index: 10;
+}
+
+.cart-icon-wrapper {
+  align-content: center;
+  margin-left: 1rem;
+}
+
+#shoppingCartBtn {
+  display: flex;
+  align-items: center;
+}
+
+.cart-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.cart-icon:hover {
+  transform: scale(1.05);
+}
+
+.cart-icon .icon {
+  font-size: 1.5rem;
+}
+
+#cartPopup {
+  background: #fcfcfc;
+  border: 1px solid #ddd;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: none;
+  position: absolute;
+  padding: 1rem;
+  right: 2;
+  top: 100%;
+  width: 300px;
+  z-index: 1000;
+}
+
+.cart-popup-header {
+  margin-bottom: 1rem;
+}
+
+.cart-list {
+  text-align: left;
+  list-style: square;
+  padding: 1rem;
+  margin: 0 0 1rem 0;
+}
+
+.cart-list li {
+  margin-bottom: 0.5rem;
+}
+
+#cartPopup.is-active {
+  display: block;
 }
 
 main {
@@ -41,7 +109,7 @@ p {
 }
 
 a {
-  color: black;
+  color: #0f0f0f;
   text-decoration: none;
 }
 
@@ -118,18 +186,12 @@ a:hover {
   font-weight: bold;
 }
 
-/* .service-info,
-.product-info {
-  color: #0f0f0f;
-} */
-
 .product-image {
   margin: 1rem;
   max-width: 40%;
 }
 
 footer {
-  align-items: center;
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -147,5 +209,11 @@ footer {
   }
   .show-img img:nth-child(2) {
     display: none;
+  }
+}
+
+@media (max-width: 1025px) {
+  .navbar-menu {
+    top: 100%;
   }
 }

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bubbler+One&family=Madimi+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../index.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kassa</title>
+  </head>
+  <body>
+    <header>
+      <h1 class="title">Kassa</h1>
+    </header>
+
+    <main>
+      <div id="checkoutContainer">
+        <h2>Din kundvagn</h2>
+        <ul id="checkoutCartList"></ul>
+        <p>
+          <strong>Totalpris:</strong> <span id="checkoutTotalPrice">0</span> kr
+        </p>
+        <button class="button is-primary" id="confirmOrderBtn">
+          Bekräfta beställning
+        </button>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Tant Ewas hundar i samarbete med TB Tech & Design</p>
+    </footer>
+  </body>
+</html>
