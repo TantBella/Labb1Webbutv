@@ -40,12 +40,12 @@
                 <h3 class="title is-5">Din kundvagn</h3>
               </div>
               <ul id="cartList" class="cart-list"></ul>
-               <div id="totalPriceContainer">
-      <p>
-        <strong>Totalpris:</strong> <span id="totalPrice">0</span> kr
-      </p>
-    </div>
-              <p id="emptyCartMessage" style="display: none">
+              <div id="totalPriceContainer" style="display: none">
+                <p>
+                  <strong>Totalpris:</strong> <span id="totalPrice">0</span> kr
+                </p>
+              </div>
+              <p id="emptyCartMessage" >
                 Kundvagnen är tom
               </p>
               <a
@@ -59,32 +59,6 @@
             </div>
           </div>
 
-          <!-- <div class="cart-icon-wrapper">
-            <button id="shoppingCartBtn" class="cart-icon">
-              <span class="icon m-4">
-                <img
-                  src="../images/icons/shopping_cart.png"
-                  alt="Shopping Cart"
-                />
-              </span>
-              <span id="cartCount" class="tag is-small">0</span>
-            </button>
-            <div id="cartPopup" class="cart-popup">
-              <div class="cart-popup-header">
-                <h3 class="title is-5">Din kundvagn</h3>
-              </div>
-              <ul id="cartList" class="cart-list"></ul>
-              <p>
-                <strong>Totalpris:</strong> <span id="totalPrice">0</span> kr
-              </p>
-              <p id="emptyCartMessage" style="display: none;">Kundvagnen är tom</p>
-              <a id="goToCheckoutBtn" href="checkout.html" class="button is-primary" style="display: none;">Gå till kassa</a>
-              <button class="button is-danger" id="closeCartBtn">Stäng</button>
-
-               <a href="checkout.html" class="button is-primary">Gå till kassa</a>
-              <button class="button is-danger" id="closeCartBtn">Stäng</button>
-            </div>
-          </div> -->
           <a
             role="button"
             class="navbar-burger"
@@ -112,7 +86,7 @@
 
     <main class="m-4">
       <h1 class="title">Produkter och tjänster</h1>
-      <div>
+      <div class="box">
         <div id="servicesContainer"></div>
         <div id="productsContainer"></div>
       </div>

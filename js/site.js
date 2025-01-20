@@ -3,31 +3,37 @@
 const services = {
   Kurser: [
     {
+      id: 1,
       name: "Individuell hundträning",
       info: "Personligt anpassad träning för att möta din hunds unika behov.",
       price: 1650,
     },
     {
+      id: 2,
       name: "Beteenderådgivning",
       info: "Hjälp med problem som aggression, rädsla eller överdriven skällning.",
       price: 1850,
     },
     {
+      id: 3,
       name: "Valpträning",
       info: "Grundläggande träning och socialisering för din valp.",
       price: 850,
     },
     {
+      id: 5,
       name: "Agility 1",
       info: "Vi tränar kontakt, balans & koordination med roliga övningar. På denna kursen börjar vi också lära in hopphinder, däcket, långhoppet, tunnlar och slalom.",
       price: 1800,
     },
     {
+      id: 6,
       name: "Nosework 1",
       info: "Träning som utmanar både dig och din hund, ger er mer samarbete och glädje tillsammans.",
       price: 1750,
     },
     {
+      id: 7,
       name: "Mental aktivering",
       info: "Vi går igenom varför, hur, var och när du bör aktivera din hund med de speciella övningar som mental aktivering innebär.",
       price: 1650,
@@ -40,6 +46,7 @@ const services = {
 const products = {
   Hundgodis: [
     {
+      id: 1,
       productname: "4Dogs Belöningsgodis Hjort ca 100 g",
       productinfo: "Torkat hundgodis utan tillsatser, ursprung EU",
       price: 49,
@@ -47,6 +54,7 @@ const products = {
         "https://www.4dogs.se/pub_images/large/Hundgodis-beloningsgodis-torkade-kuber-av-hjort-100-gram.jpg?timestamp=1708441176",
     },
     {
+      id: 2,
       productname: "Trixie Premio Leverpaté belöningsgodis på tub 110 g",
       productinfo: "Utan tillsatt socker, glutenfri",
       price: 49,
@@ -54,6 +62,7 @@ const products = {
         "https://www.4dogs.se/pub_images/large/Trixie-leverpate-pa-tub-beloningsgodis-for-hund-110-gram.jpg?timestamp=1668428248",
     },
     {
+      id: 3,
       productname: "2pets belöningsgodis Kyckling Mini - 400 g",
       productinfo: "Av färska råvaror, låg fetthalt",
       price: 159,
@@ -61,6 +70,7 @@ const products = {
         "https://www.4dogs.se/pub_images/large/2pets-hundgodis-kuber-mini-av-kyckling-400-gram-beloningsgodis.jpg?timestamp=1702300422",
     },
     {
+      id: 4,
       productname: "Trixie belöningsgodis Vegan cubes 100 g",
       productinfo: "Veganskt hundgodis med frukt och vegetabilier",
       price: 45,
@@ -70,6 +80,7 @@ const products = {
   ],
   Hundleksaker: [
     {
+      id: 1,
       productname: "Bistos Inca med fårskinn och gallerboll - orange",
       productinfo: "Svensktillverkad, ca 34 cm lång med expanderhandtag",
       price: 349,
@@ -77,6 +88,7 @@ const products = {
         "https://www.4dogs.se/pub_images/large/Bistos-Inca-hundleksak-med-farskinn-och-gallerboll-orange.JPG?timestamp=1723734048",
     },
     {
+      id: 2,
       productname:
         "Chuckit! Flying Squirrel Medium 23 cm - flytande hundleksak",
       productinfo: "Diameter inkl. fötter 34 cm",
@@ -85,12 +97,14 @@ const products = {
         "https://www.4dogs.se/pub_images/large/CHUC0511300__2.jpg?timestamp=1702482877",
     },
     {
+      id: 3,
       productname: "Nina Ottosson Dog Treat Maze - Small",
       productinfo: "Svårighetsgrad 2",
       price: 189,
       image: "https://www.4dogs.se/pub_images/large/Dog---maze.jpg",
     },
     {
+      id: 4,
       productname: "Elsa Elefant plysch - hundleksak",
       productinfo: "22x8x14 cm, utan ljud",
       price: 59,
@@ -112,15 +126,14 @@ const createElement = (tag, classes = [], content = "", attributes = {}) => {
   return element;
 };
 
-const createCard = ({ name, info, price, image }, type = "item") => {
+const createCard = ({ id, name, info, price, image }, type = "item") => {
   const card = createElement("div", ["box", `${type}-box`]);
   card.innerHTML = `
     ${image ? `<img src="${image}" alt="${name}" class="${type}-image" />` : ""}
     <h3 class="${type}-title">${name}</h3>
     <p class="${type}-info">${info}</p>
     <p><strong>Pris:</strong> ${price} kr</p>
-    <button id="cartBtn" class="button is-link is-fullwidth mx-2 my-4"
-      onclick="addToCart('${name}', ${price})">Lägg till i kundvagn</button>
+    <button id="${type}-cartBtn-${id}" class="button is-link is-fullwidth mx-2 my-4 cartBtn" onclick="addToCart(${id}, ${price}, '${type}')">Lägg till i kundvagn</button>
   `;
   return card;
 };
@@ -147,6 +160,7 @@ const renderSection = (containerId, titleText, items, type = "item") => {
 };
 
 const servicesData = services.Kurser.map((service) => ({
+  id: service.id,
   name: service.name,
   info: service.info,
   price: service.price,
@@ -155,6 +169,7 @@ const servicesData = services.Kurser.map((service) => ({
 const productsData = Object.entries(products).map(([category, items]) => ({
   category,
   items: items.map((product) => ({
+    id: product.id,
     name: product.productname,
     info: product.productinfo,
     price: product.price,
@@ -180,6 +195,8 @@ const goToCheckoutBtn = document.getElementById("goToCheckoutBtn");
 const emptyCartMessage = document.getElementById("emptyCartMessage");
 const totalPriceContainer = document.getElementById("totalPriceContainer");
 
+const cartItemsCount = {};
+
 function updateCart() {
   cartList.innerHTML = "";
   let totalPrice = 0;
@@ -201,15 +218,42 @@ function updateCart() {
     emptyCartMessage.style.display = "none";
     goToCheckoutBtn.style.display = "inline-block";
     totalPriceContainer.style.display = "block";
-    totalPriceElement.textContent = totalPrice;
+    totalPriceElement.textContent = totalPrice; 
   }
 }
 
-document.addEventListener("DOMContentLoaded", updateCart);
+function updateCartButton(id) {
+  const button = document.querySelector(
+    `#service-cartBtn-${id}, #product-cartBtn-${id}`
+  );
+  if (button) {
+    const itemCount = cartItemsCount[id] || 0;
+    button.textContent =
+      itemCount > 0
+        ? `${itemCount} stycken i kundvagnen`
+        : "Lägg till i kundvagn";
+  } else {
+    console.error(`Button with ID cartBtn-${id} not found.`);
+  }
+}
 
-function addToCart(name, price) {
-  cart.push({ name, price });
-  updateCart();
+function addToCart(id, price, type) {
+  const product = [
+    ...services.Kurser,
+    ...Object.values(products)
+      .flat()
+      .map((category) => category.items)
+      .flat(),
+  ].find((item) => item.id === id);
+
+  if (product) {
+    cart.push({ name: product.name, price });
+
+    cartItemsCount[id] = (cartItemsCount[id] || 0) + 1;
+
+    updateCartButton(id);
+    updateCart();
+  }
 }
 
 shoppingCartBtn.addEventListener("click", (e) => {

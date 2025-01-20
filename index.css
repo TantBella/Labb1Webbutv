@@ -93,12 +93,12 @@ main {
 
 h1,
 h2 {
-  font-family: "Madimi One", serif;
-  margin: 0;
+  /* font-family: "Madimi One", serif; */
+  font-family: "Bubbler One", serif;
+  /* margin: 0; */
 }
 
 .headlineP {
-  font-family: "Bubbler One", serif;
   font-size: 1.5em;
   text-align: center;
 }
@@ -151,12 +151,12 @@ a:hover {
 }
 
 #submitBtn,
-#cartBtn {
+button {
   background-color: #cdcde6;
 }
 
 #submitBtn:hover,
-#cartBtn:hover {
+button:hover {
   background-color: #c7a6c8;
   font-weight: bold;
 }
@@ -165,7 +165,6 @@ a:hover {
 .product-box {
   align-items: center;
   background-color: #fcfcfc;
-  border: 1px solid #a4b7c4;
   display: flex;
   flex-direction: column;
   height: 95%;

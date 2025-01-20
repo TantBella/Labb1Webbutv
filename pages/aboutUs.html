@@ -49,74 +49,81 @@
     </header>
 
     <main class="m-4">
-      <h1 class="title">Om Tant Ewas hundar</h1>
-      <div class="columns">
-        <div class="column is-two-thirds about-p">
-          <p>
-            Jag är en certifierad hundpsykolog med flera års erfarenhet av att
-            hjälpa hundar och deras ägare. Lorem ipsum dolor, sit amet
-            consectetur adipisicing elit. Molestias quis dolorum laudantium
-            dignissimos deleniti quam dolorem ducimus saepe voluptatibus, eius
-            facere, labore earum ab odio, asperiores vel perferendis enim
-            possimus!
-          </p>
-          <p>
-            Min passion är att skapa harmoni och förståelse mellan människor och
-            deras fyrbenta vänner. Jag vil att hundträning ska vara enkel att
-            förstå och enkel att få till. Bra hundträning ska vara tillgänglig
-            för alla. Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Culpa, dignissimos cumque dolorem ad ratione necessitatibus minima.
-            Mollitia sapiente ut accusamus eos, odit architecto aut perferendis
-            laborum impedit assumenda repudiandae cumque!
-          </p>
+      <div class="box">
+        <h1 class="title">Om Tant Ewas hundar</h1>
+        <div class="columns">
+          <div class="column is-two-thirds about-p">
+            <p>
+              Jag är en certifierad hundpsykolog med flera års erfarenhet av att
+              hjälpa hundar och deras ägare. Lorem ipsum dolor, sit amet
+              consectetur adipisicing elit. Molestias quis dolorum laudantium
+              dignissimos deleniti quam dolorem ducimus saepe voluptatibus, eius
+              facere, labore earum ab odio, asperiores vel perferendis enim
+              possimus!
+            </p>
+            <p>
+              Min passion är att skapa harmoni och förståelse mellan människor
+              och deras fyrbenta vänner. Jag vil att hundträning ska vara enkel
+              att förstå och enkel att få till. Bra hundträning ska vara
+              tillgänglig för alla. Lorem ipsum dolor sit amet consectetur,
+              adipisicing elit. Culpa, dignissimos cumque dolorem ad ratione
+              necessitatibus minima. Mollitia sapiente ut accusamus eos, odit
+              architecto aut perferendis laborum impedit assumenda repudiandae
+              cumque!
+            </p>
+          </div>
+          <div class="column is-one-third">
+            <img
+              id="about-dog"
+              src="../images/hund4.jpg"
+              alt="en tecknad hund"
+            />
+          </div>
         </div>
-        <div class="column is-one-third">
-          <img id="about-dog" src="../images/hund4.jpg" alt="en tecknad hund" />
-        </div>
-      </div>
 
-      <div class="columns my-4 p-2">
-        <div class="column is-half">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d772.5825229727759!2d12.016308278347022!3d57.852499890003216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46455e340e7fa70d%3A0xb37dd06a0a3b7df6!2sTransformatorv%C3%A4gen%2C%20445%2034%20Ale!5e0!3m2!1ssv!2sse!4v1736845107588!5m2!1ssv!2sse"
-            height="400"
-            style="border: 0"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </div>
-        <div class="column is-half">
-          <div class="container">
-            <h2 class="has-text-weight-bold headlineP mb-2">Kontakta mig</h2>
-            <form onsubmit="onSubmit(event)">
-              <input
-                class="input m-2"
-                type="text"
-                placeholder="Namn"
-                required
-              />
-              <input
-                class="input m-2"
-                type="email"
-                placeholder="example@mail.com"
-                required
-              />
-              <textarea
-                class="textarea m-2"
-                placeholder="Meddelande"
-                rows="4"
-                required
-              ></textarea>
-              <button
-                type="submit"
-                id="submitBtn"
-                class="button is-link is-fullwidth mx-2 my-4"
-              >
-                Skicka
-              </button>
-              <span id="form-message" class="is-block mt-2"></span>
-            </form>
+        <div class="columns my-4 p-2">
+          <div class="column is-half">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d772.5825229727759!2d12.016308278347022!3d57.852499890003216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46455e340e7fa70d%3A0xb37dd06a0a3b7df6!2sTransformatorv%C3%A4gen%2C%20445%2034%20Ale!5e0!3m2!1ssv!2sse!4v1736845107588!5m2!1ssv!2sse"
+              height="400"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+          <div class="column is-half">
+            <div class="container">
+              <h2 class="has-text-weight-bold headlineP mb-2">Kontakta mig</h2>
+              <form onsubmit="onSubmit(event)">
+                <input
+                  class="input m-2"
+                  type="text"
+                  placeholder="Namn"
+                  required
+                />
+                <input
+                  class="input m-2"
+                  type="email"
+                  placeholder="example@mail.com"
+                  required
+                />
+                <textarea
+                  class="textarea m-2"
+                  placeholder="Meddelande"
+                  rows="4"
+                  required
+                ></textarea>
+                <button
+                  type="submit"
+                  id="submitBtn"
+                  class="button is-link is-fullwidth mx-2 my-4"
+                >
+                  Skicka
+                </button>
+                <span id="form-message" class="is-block mt-2"></span>
+              </form>
+            </div>
           </div>
         </div>
       </div>
