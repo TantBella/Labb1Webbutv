@@ -13,6 +13,12 @@ body {
   text-align: center;
 }
 
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+
 .navbar,
 footer {
   align-items: center;
@@ -63,7 +69,7 @@ footer {
   padding: 1rem;
   right: 2;
   top: 100%;
-  width: 300px;
+  width: 400px;
   z-index: 1000;
 }
 
@@ -89,6 +95,8 @@ footer {
 main {
   flex: 1;
   padding: 2rem;
+  margin: 6rem auto;
+  max-width: 1400px;
 }
 
 h1,
@@ -150,13 +158,19 @@ a:hover {
   max-height: 400px;
 }
 
+#iframeContainer {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 #submitBtn,
-button {
+.cartBtn {
   background-color: #cdcde6;
+  padding: 1rem;
 }
 
 #submitBtn:hover,
-button:hover {
+.cartBtn:hover {
   background-color: #c7a6c8;
   font-weight: bold;
 }
@@ -175,7 +189,7 @@ button:hover {
 
 .service-box:hover,
 .product-box:hover {
-  background-color: #b5c9e6;
+  /* background-color: #b5c9e6; */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transform: scale(1.05);
 }
@@ -197,6 +211,13 @@ footer {
   width: 100%;
 }
 
+#footer{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  
+}
+
 @media (min-width: 1060px) {
   .show-img,
   .about-p {
@@ -215,4 +236,13 @@ footer {
   .navbar-menu {
     top: 100%;
   }
+  #cartPopup {
+    width: 300px;
+  }
 }
+/* @media (max-width: 400px) {
+  #iframeContainer {
+    max-width: 300px;
+    overflow-x: hidden;
+  }
+} */

@@ -17,7 +17,7 @@
     <title>Om Tant Ewas hundar</title>
   </head>
 
-  <body>
+  <body class="is-unselectable">
     <header>
       <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="nav navbar-brand">
@@ -48,7 +48,7 @@
       </nav>
     </header>
 
-    <main class="m-4">
+    <main>
       <div class="box">
         <h1 class="title">Om Tant Ewas hundar</h1>
         <div class="columns">
@@ -83,18 +83,11 @@
 
         <div class="columns my-4 p-2">
           <div class="column is-half">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d772.5825229727759!2d12.016308278347022!3d57.852499890003216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46455e340e7fa70d%3A0xb37dd06a0a3b7df6!2sTransformatorv%C3%A4gen%2C%20445%2034%20Ale!5e0!3m2!1ssv!2sse!4v1736845107588!5m2!1ssv!2sse"
-              height="400"
-              style="border: 0"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
-          <div class="column is-half">
             <div class="container">
-              <h2 class="has-text-weight-bold headlineP mb-2">Kontakta mig</h2>
+              <h2 class="has-text-weight-bold headlineP mb-2">Kontakta oss</h2>
+              <p class="has-text-centered">
+                Skicka ett meddelande så återkommer vi så snart vi kan
+              </p>
               <form onsubmit="onSubmit(event)">
                 <input
                   class="input m-2"
@@ -125,13 +118,31 @@
               </form>
             </div>
           </div>
-        </div>
+
+  <div class="column is-half is-align-content-center">
+       <div id="iframeContainer">
+           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1157.5632866847143!2d12.018538383164097!3d57.852579491925006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46455e340e7fa70d%3A0xb37dd06a0a3b7df6!2sTransformatorv%C3%A4gen%2C%20445%2034%20Ale!5e0!3m2!1ssv!2sse!4v1737639834102!5m2!1ssv!2sse" width="500" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+       </div>
+          </div>
       </div>
     </main>
 
     <footer>
+    <div id="footer">
+    <address>
+    <p class="has-text-weight-semibold">Adress:</p>
+    <p>
+Transformatorvägen 5,
+Bohus
+    </p>
+    </address>
       <p>Följ oss på <a href="#">Instagram</a> och <a href="#">Facebook</a>.</p>
-      <p>&copy; 2025 Tant Ewas hundar i samarbete med TB Tech & Design</p>
+  <div>
+    <p class="has-text-weight-semibold">Telefonnummer:</p>
+    <p  class="has-text-right"><a  href="tel:010-175 32 00">010-175 32 00</a></p>
+  </div>
+    </div>
+      <p class="mt-4">&copy; 2025 Tant Ewas hundar i samarbete med TB Tech & Design</p>
     </footer>
 
     <script src="../js/navBar.js"></script>

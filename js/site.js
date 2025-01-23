@@ -133,7 +133,10 @@ const createCard = ({ id, name, info, price, image }, type = "item") => {
     <h3 class="${type}-title">${name}</h3>
     <p class="${type}-info">${info}</p>
     <p><strong>Pris:</strong> ${price} kr</p>
-    <button id="${type}-cartBtn-${id}" class="button is-link is-fullwidth mx-2 my-4 cartBtn" onclick="addToCart(${id}, ${price}, '${type}')">Lägg till i kundvagn</button>
+
+<button id="${type}-cartBtn-${id}" class="button  is-fullwidth mx-2 my-4 cartBtn" onclick="addToCart(${id}, ${price}, '${type}')">Lägg till i kundvagn</button>
+
+
   `;
   return card;
 };
@@ -184,7 +187,7 @@ productsData.forEach(({ category, items }) => {
 });
 
 // Kundvagnen:
-const cart = [];
+const cart = {};
 const cartList = document.getElementById("cartList");
 const totalPriceElement = document.getElementById("totalPrice");
 const shoppingCartBtn = document.getElementById("shoppingCartBtn");
@@ -200,17 +203,27 @@ const cartItemsCount = {};
 function updateCart() {
   cartList.innerHTML = "";
   let totalPrice = 0;
+  let totalItems = 0;
 
-  cart.forEach((item) => {
+
+  Object.values(cart).forEach((item) => {
     const listItem = document.createElement("li");
-    listItem.textContent = `${item.name} - ${item.price} kr`;
+    listItem.textContent = `${item.name}  - ${item.quantity} st - ${
+      item.price * item.quantity
+    } kr`;
     cartList.appendChild(listItem);
-    totalPrice += item.price;
+    totalPrice += item.price * item.quantity;
+    totalItems += item.quantity;
   });
 
-  cartCount.textContent = cart.length;
+  if (cartCount) {
+    cartCount.textContent = totalItems;
+    console.log("Cart count updated:", totalItems);
+  } else {
+    console.error("cartCount element not found!");
+  }
 
-  if (cart.length === 0) {
+  if (Object.keys(cart).length === 0) {
     emptyCartMessage.style.display = "block";
     goToCheckoutBtn.style.display = "none";
     totalPriceContainer.style.display = "none";
@@ -218,7 +231,60 @@ function updateCart() {
     emptyCartMessage.style.display = "none";
     goToCheckoutBtn.style.display = "inline-block";
     totalPriceContainer.style.display = "block";
-    totalPriceElement.textContent = totalPrice; 
+    totalPriceElement.textContent = totalPrice;
+  }
+}
+
+
+// function updateCart() {
+//   cartList.innerHTML = "";
+//   let totalPrice = 0;
+//   let totalItems = 0;
+
+//   Object.values(cart).forEach((item) => {
+//     const listItem = document.createElement("li");
+//     listItem.textContent = `${item.name} - ${item.quantity} st - ${
+//       item.price * item.quantity
+//     } kr`;
+//     cartList.appendChild(listItem);
+//     totalPrice += item.price * item.quantity;
+//     totalItems += item.quantity;
+//   });
+
+//   cartCount.textContent = Object.keys(totalItems).length;
+
+//   if (Object.keys(cart).length === 0) {
+//     emptyCartMessage.style.display = "block";
+//     goToCheckoutBtn.style.display = "none";
+//     totalPriceContainer.style.display = "none";
+//   } else {
+//     emptyCartMessage.style.display = "none";
+//     goToCheckoutBtn.style.display = "inline-block";
+//     totalPriceContainer.style.display = "block";
+//     totalPriceElement.textContent = totalPrice;
+//   }
+// }
+
+function updateCartQuantity(id, change) {
+  const product = [...services.Kurser, ...Object.values(products).flat()].find(
+    (item) => item.id === id
+  );
+
+  if (product) {
+    cartItemsCount[id] = (cartItemsCount[id] || 0) + change;
+
+    if (cartItemsCount[id] <= 0) {
+      cartItemsCount[id] = 0;
+      cart.splice(
+        cart.findIndex((item) => item.name === product.name),
+        1
+      );
+    } else if (change > 0) {
+      cart.push({ name: product.name, price: product.price });
+    }
+
+    updateCartButton(id);
+    updateCart();
   }
 }
 
@@ -238,22 +304,36 @@ function updateCartButton(id) {
 }
 
 function addToCart(id, price, type) {
-  const product = [
-    ...services.Kurser,
-    ...Object.values(products)
-      .flat()
-      .map((category) => category.items)
-      .flat(),
-  ].find((item) => item.id === id);
+  const product = [...services.Kurser, ...Object.values(products).flat()].find(
+    (item) => item.id === id
+  );
 
   if (product) {
-    cart.push({ name: product.name, price });
-
+    if (cart[id]) {
+      cart[id].quantity += 1;
+    } else {
+      cart[id] = { name: product.name, price, quantity: 1 };
+    }
     cartItemsCount[id] = (cartItemsCount[id] || 0) + 1;
 
     updateCartButton(id);
     updateCart();
   }
+
+  // const product = [
+  //   ...services.Kurser,
+  //   ...Object.values(products)
+  //     .flat()
+  //     .map((category) => category.items)
+  //     .flat(),
+  // ].find((item) => item.id === id);
+
+  // if (product) {
+  //   cart.push({ name: product.name, price });
+
+  //   updateCartButton(id);
+  //   updateCart();
+  // }
 }
 
 shoppingCartBtn.addEventListener("click", (e) => {

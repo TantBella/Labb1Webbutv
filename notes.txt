@@ -1,10 +1,11 @@
 
 lägg till i kundvagn tom fäst i botten av sina rutor så d hamnar på samma höjd
 
-telefon oh adress på kontakt
 
-när något ligger i kundvagen så ska det synas p köpknappen antal -check
+navbaren i  mobilmode
 
-och man ska kunna trycla minus eller plus för att justera abtal
+produktbilder är försvunna och knapparna reagerar inre och de blir undefined i kundvagenn
 
-i kundvagnnen ska man kunna ta bort och lägga till
+justera cartpopup så dn blir responsiv och har snygg placerin
+
+kolla lighthouse generate report
