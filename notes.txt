@@ -1,11 +1,4 @@
 
-lägg till i kundvagn tom fäst i botten av sina rutor så d hamnar på samma höjd
-
-navbaren i  mobilmode
-footer respsinv
-
-
-justera cartpopup så dn blir responsiv och har snygg placerin
 
 kolla lighthouse generate report
 

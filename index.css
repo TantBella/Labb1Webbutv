@@ -182,14 +182,13 @@ a:hover {
   display: flex;
   flex-direction: column;
   height: 95%;
-  justify-content: center;
+  justify-content: space-evenly;
   overflow-wrap: break-word;
   transition: transform 0.4s, box-shadow 0.4s;
 }
 
 .service-box:hover,
 .product-box:hover {
-  /* background-color: #b5c9e6; */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transform: scale(1.05);
 }
@@ -207,16 +206,19 @@ a:hover {
 footer {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
   width: 100%;
 }
 
-#footer{
+#footer {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  
 }
+
+/* #footer div p,
+#footer div a {
+  text-align: right;
+} */
 
 @media (min-width: 1060px) {
   .show-img,
@@ -240,9 +242,10 @@ footer {
     width: 300px;
   }
 }
-/* @media (max-width: 400px) {
-  #iframeContainer {
-    max-width: 300px;
-    overflow-x: hidden;
+
+@media (max-width: 768px) {
+  #footer {
+    flex-direction: column;
+    align-items: flex-start;
   }
-} */
+}

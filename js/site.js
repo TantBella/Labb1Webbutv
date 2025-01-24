@@ -118,21 +118,19 @@ const createElement = (tag, classes = [], content = "", attributes = {}) => {
   return element;
 };
 
-// const createCard = ({ id, name, info, price, image }, type = "item") => {
-//   const card = createElement("div", ["box", `${type}-box`]);
-
 const createCard = (item, type = "item") => {
   const { id, name, info, price, image } = item;
   const card = createElement("div", ["box", `${type}-box`]);
 
   card.innerHTML = `
+  <div class="p-2">
     ${image ? `<img src="${image}" alt="${name}" class="${type}-image" />` : ""}
 
     <h3 class="${type}-title">${name}</h3>
     <p class="${type}-info">${info}</p>
-    <p><strong>Pris:</strong> ${price} kr</p>
+    <p><strong>Pris:</strong> ${price} kr</p> </div>
 
-<button id="${type}-cartBtn-${id}" class="button is-fullwidth mx-2 my-4 cartBtn" onclick="addToCart(${id}, ${price}, '${type}')">Lägg till i kundvagn</button>
+<button id="${type}-cartBtn-${id}" class="button is-fullwidth cartBtn" onclick="addToCart(${id}, ${price}, '${type}')">Lägg till i kundvagn</button>
   `;
   return card;
 };
