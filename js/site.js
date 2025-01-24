@@ -46,70 +46,62 @@ const services = {
 const products = {
   Hundgodis: [
     {
-      id: 1,
-      productname: "4Dogs Belöningsgodis Hjort ca 100 g",
-      productinfo: "Torkat hundgodis utan tillsatser, ursprung EU",
+      id: 11,
+      name: "4Dogs Belöningsgodis Hjort ca 100 g",
+      info: "Torkat hundgodis utan tillsatser, ursprung EU",
       price: 49,
-      image:
-        "https://www.4dogs.se/pub_images/large/Hundgodis-beloningsgodis-torkade-kuber-av-hjort-100-gram.jpg?timestamp=1708441176",
+      image: "../images/product_images/candy1.jpg",
     },
     {
-      id: 2,
-      productname: "Trixie Premio Leverpaté belöningsgodis på tub 110 g",
-      productinfo: "Utan tillsatt socker, glutenfri",
+      id: 12,
+      name: "Trixie Premio Leverpaté belöningsgodis på tub 110 g",
+      info: "Utan tillsatt socker, glutenfri",
       price: 49,
-      image:
-        "https://www.4dogs.se/pub_images/large/Trixie-leverpate-pa-tub-beloningsgodis-for-hund-110-gram.jpg?timestamp=1668428248",
+      image: "../images/product_images/candy2.jpg",
     },
     {
-      id: 3,
-      productname: "2pets belöningsgodis Kyckling Mini - 400 g",
-      productinfo: "Av färska råvaror, låg fetthalt",
+      id: 13,
+      name: "2pets belöningsgodis Kyckling Mini - 400 g",
+      info: "Av färska råvaror, låg fetthalt",
       price: 159,
-      image:
-        "https://www.4dogs.se/pub_images/large/2pets-hundgodis-kuber-mini-av-kyckling-400-gram-beloningsgodis.jpg?timestamp=1702300422",
+      image: "../images/product_images/candy3.jpg",
     },
     {
-      id: 4,
-      productname: "Trixie belöningsgodis Vegan cubes 100 g",
-      productinfo: "Veganskt hundgodis med frukt och vegetabilier",
+      id: 14,
+      name: "Trixie belöningsgodis Vegan cubes 100 g",
+      info: "Veganskt hundgodis med frukt och vegetabilier",
       price: 45,
-      image:
-        "https://www.4dogs.se/pub_images/large/Trixie-vegan-cubes-veganskt-hundgodis-med-frukt-och-gronsaker-100-g.jpg?timestamp=1736437727",
+      image: "../images/product_images/candy4.jpg",
     },
   ],
   Hundleksaker: [
     {
-      id: 1,
-      productname: "Bistos Inca med fårskinn och gallerboll - orange",
-      productinfo: "Svensktillverkad, ca 34 cm lång med expanderhandtag",
+      id: 21,
+      name: "Bistos Inca med fårskinn och gallerboll - orange",
+      info: "Svensktillverkad, ca 34 cm lång med expanderhandtag",
       price: 349,
-      image:
-        "https://www.4dogs.se/pub_images/large/Bistos-Inca-hundleksak-med-farskinn-och-gallerboll-orange.JPG?timestamp=1723734048",
+      image: "../images/product_images/toys1.jpg",
     },
     {
-      id: 2,
-      productname:
-        "Chuckit! Flying Squirrel Medium 23 cm - flytande hundleksak",
-      productinfo: "Diameter inkl. fötter 34 cm",
+      id: 22,
+      name: "Chuckit! Flying Squirrel Medium 23 cm - flytande hundleksak",
+      info: "Diameter inkl. fötter 34 cm",
       price: 199,
-      image:
-        "https://www.4dogs.se/pub_images/large/CHUC0511300__2.jpg?timestamp=1702482877",
+      image: "../images/product_images/toys2.jpg",
     },
     {
-      id: 3,
-      productname: "Nina Ottosson Dog Treat Maze - Small",
-      productinfo: "Svårighetsgrad 2",
+      id: 23,
+      name: "Nina Ottosson Dog Treat Maze - Small",
+      info: "Svårighetsgrad 2",
       price: 189,
-      image: "https://www.4dogs.se/pub_images/large/Dog---maze.jpg",
+      image: "../images/product_images/toys3.jpg",
     },
     {
-      id: 4,
-      productname: "Elsa Elefant plysch - hundleksak",
-      productinfo: "22x8x14 cm, utan ljud",
+      id: 24,
+      name: "Elsa Elefant plysch - hundleksak",
+      info: "22x8x14 cm, utan ljud",
       price: 59,
-      image:
-        "https://www.4dogs.se/pub_images/large/Hundleksak-elefant-gra-plysch-tpr-inget-pipljud-22-cm.jpg?timestamp=1722121330",
+      image: "../images/product_images/toys4.jpg",
     },
   ],
 };
@@ -126,17 +118,21 @@ const createElement = (tag, classes = [], content = "", attributes = {}) => {
   return element;
 };
 
-const createCard = ({ id, name, info, price, image }, type = "item") => {
+// const createCard = ({ id, name, info, price, image }, type = "item") => {
+//   const card = createElement("div", ["box", `${type}-box`]);
+
+const createCard = (item, type = "item") => {
+  const { id, name, info, price, image } = item;
   const card = createElement("div", ["box", `${type}-box`]);
+
   card.innerHTML = `
     ${image ? `<img src="${image}" alt="${name}" class="${type}-image" />` : ""}
+
     <h3 class="${type}-title">${name}</h3>
     <p class="${type}-info">${info}</p>
     <p><strong>Pris:</strong> ${price} kr</p>
 
-<button id="${type}-cartBtn-${id}" class="button  is-fullwidth mx-2 my-4 cartBtn" onclick="addToCart(${id}, ${price}, '${type}')">Lägg till i kundvagn</button>
-
-
+<button id="${type}-cartBtn-${id}" class="button is-fullwidth mx-2 my-4 cartBtn" onclick="addToCart(${id}, ${price}, '${type}')">Lägg till i kundvagn</button>
   `;
   return card;
 };
@@ -167,14 +163,15 @@ const servicesData = services.Kurser.map((service) => ({
   name: service.name,
   info: service.info,
   price: service.price,
+  image: null,
 }));
 
 const productsData = Object.entries(products).map(([category, items]) => ({
   category,
   items: items.map((product) => ({
     id: product.id,
-    name: product.productname,
-    info: product.productinfo,
+    name: product.name,
+    info: product.info,
     price: product.price,
     image: product.image,
   })),
@@ -205,7 +202,6 @@ function updateCart() {
   let totalPrice = 0;
   let totalItems = 0;
 
-
   Object.values(cart).forEach((item) => {
     const listItem = document.createElement("li");
     listItem.textContent = `${item.name}  - ${item.quantity} st - ${
@@ -234,7 +230,6 @@ function updateCart() {
     totalPriceElement.textContent = totalPrice;
   }
 }
-
 
 // function updateCart() {
 //   cartList.innerHTML = "";

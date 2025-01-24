@@ -1,11 +1,12 @@
 
 lägg till i kundvagn tom fäst i botten av sina rutor så d hamnar på samma höjd
 
-
 navbaren i  mobilmode
+footer respsinv
 
-produktbilder är försvunna och knapparna reagerar inre och de blir undefined i kundvagenn
 
 justera cartpopup så dn blir responsiv och har snygg placerin
 
 kolla lighthouse generate report
+
+favicon
