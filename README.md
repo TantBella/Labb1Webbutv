@@ -50,16 +50,16 @@ Skapa responsivitet med Bootstrap (eller liknande css-bibliotek).
 På sidan "Om Oss" Ska man kunna se adressen i en inbakad Google
 Maps-modul.
 
-![Bild på landingpage](https://github.com/TantBella/Lab2Csharp/blob/main/shoppingcart.png)
+![Bild på landingpage](https://github.com/TantBella/Labb1Webbutv/blob/main/indexDesktop.png)
 
-![Bild på landingpage](https://github.com/TantBella/Lab2Csharp/blob/main/shoppingcart.png)
+![Bild på landingpage](https://github.com/TantBella/Labb1Webbutv/blob/main/indexMobile.png)
 
-![Bild på produktsida](https://github.com/TantBella/Lab2Csharp/blob/main/shoppingcart.png)
+![Bild på produktsida](https://github.com/TantBella/Labb1Webbutv/blob/main/productsDesktop.png)
 
-![Bild på produktsida](https://github.com/TantBella/Lab2Csharp/blob/main/shoppingcart.png)
+![Bild på produktsida](https://github.com/TantBella/Labb1Webbutv/blob/main/productsMobile.png)
 
-![Bild på kassa](https://github.com/TantBella/Lab2Csharp/blob/main/shoppingcart.png)
+![Bild på kassa](https://github.com/TantBella/Labb1Webbutv/blob/main/checkoutMobile.png)
 
-![Bild på om oss](https://github.com/TantBella/Lab2Csharp/blob/main/shoppingcart.png)
+![Bild på om oss](https://github.com/TantBella/Labb1Webbutv/blob/main/aboutusDesktop.png)
 
-![Bild på om oss](https://github.com/TantBella/Lab2Csharp/blob/main/shoppingcart.png)
+![Bild på om oss](https://github.com/TantBella/Labb1Webbutv/blob/main/aboutusMobile.png)
