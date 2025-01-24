@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
+  <head>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
@@ -14,28 +14,88 @@
     <link rel="stylesheet" href="../index.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <title>Kassa</title>
   </head>
+
   <body>
     <header>
-      <h1 class="title">Kassa</h1>
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="nav navbar-brand">
+          <a class="navbar-item" href="index.html">
+            <img src="/images/hund3.png" alt="" />
+          </a>
+          <a
+            role="button"
+            class="navbar-burger"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarBasicExample"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+              <a class="navbar-item" href="./index.html">Startsida</a>
+              <a class="navbar-item" href="./products.html"
+                >Produkter och tjänster</a
+              >
+              <a class="navbar-item" href="./aboutUs.html">Om oss </a>
+            </div>
+          </div>
+        </div>
+      </nav>
     </header>
 
-    <main>
-      <div id="checkoutContainer">
-        <h2>Din kundvagn</h2>
-        <ul id="checkoutCartList"></ul>
+   <main>
+  <div class="container">
+    <h1 class="title">Kassa</h1>
+
+    <div id="checkoutCartList">
+      <!-- Kundvagnens innehåll här -->
+    </div>
+
+    <div id="checkoutSummary" class="checkout-summary">
+      <div id="checkoutTotalPrice">
         <p>
-          <strong>Totalpris:</strong> <span id="checkoutTotalPrice">0</span> kr
+          <strong>Totalpris:</strong>
+          <span id="checkoutTotalPriceValue">0</span> kr
         </p>
-        <button class="button is-primary" id="confirmOrderBtn">
-          Bekräfta beställning
-        </button>
       </div>
-    </main>
+      <button id="proceedToPayment" class="button is-primary">Betala</button>
+    </div>
+  </div>
+</main>
+
 
     <footer>
-      <p>&copy; 2025 Tant Ewas hundar i samarbete med TB Tech & Design</p>
+      <div id="footer">
+        <address>
+          <p class="has-text-weight-semibold">Adress:</p>
+          <p>Transformatorvägen 5, Bohus</p>
+        </address>
+
+        <div>
+          <p class="has-text-weight-semibold has-text-right">Telefonnummer:</p>
+          <p>
+            <a href="tel:010-175 32 00">010-175 32 00</a>
+          </p>
+        </div>
+
+        <p class="mt-4">
+          <br />
+          Följ oss på <a href="#">Instagram</a> och <a href="#">Facebook</a>.
+        </p>
+      </div>
+
+      <p class="mt-4">
+        &copy; 2025 Tant Ewas hundar i samarbete med TB Tech & Design
+      </p>
     </footer>
+
+    <script src="../js/navBar.js"></script>
+    <script src="../js/checkout.js"></script>
   </body>
 </html>

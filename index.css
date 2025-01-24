@@ -65,6 +65,8 @@ footer {
   border-radius: 0 0 4px 4px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: none;
+  max-height: 400px;
+  overflow-y: auto;
   position: absolute;
   padding: 1rem;
   right: 2;
@@ -103,7 +105,6 @@ h1,
 h2 {
   /* font-family: "Madimi One", serif; */
   font-family: "Bubbler One", serif;
-  /* margin: 0; */
 }
 
 .headlineP {
@@ -203,6 +204,40 @@ a:hover {
   max-width: 40%;
 }
 
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.remove-btn,
+.quantity-controls button {
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+}
+
+.remove-btn {
+  background-color: red;
+  color: white;
+}
+
+.checkout-summary {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  text-align: right;
+}
+
+#checkoutTotalPrice {
+  margin-bottom: 10px;
+}
+
+#proceedToPayment {
+  width: 100%;
+}
+
+
+
 footer {
   display: flex;
   flex-direction: column;
@@ -247,5 +282,15 @@ footer {
   #footer {
     flex-direction: column;
     align-items: flex-start;
+  }
+   .checkout-summary {
+    position: static;
+    text-align: left;
+    margin-top: 20px;
+  }
+
+  #checkoutTotalPrice, #proceedToPayment {
+    width: 100%;
+    text-align: left; 
   }
 }

@@ -182,7 +182,6 @@ productsData.forEach(({ category, items }) => {
 });
 
 // Kundvagnen:
-const cart = {};
 const cartList = document.getElementById("cartList");
 const totalPriceElement = document.getElementById("totalPrice");
 const shoppingCartBtn = document.getElementById("shoppingCartBtn");
@@ -193,7 +192,10 @@ const goToCheckoutBtn = document.getElementById("goToCheckoutBtn");
 const emptyCartMessage = document.getElementById("emptyCartMessage");
 const totalPriceContainer = document.getElementById("totalPriceContainer");
 
-const cartItemsCount = {};
+const savedCart = JSON.parse(localStorage.getItem("cart")) || {};
+const cart = { ...savedCart };
+
+updateCart();
 
 function updateCart() {
   cartList.innerHTML = "";
@@ -204,15 +206,15 @@ function updateCart() {
     const listItem = document.createElement("li");
 
     listItem.innerHTML = `
-      <span>${item.name}</span>
-      <span>${item.price} kr/st</span>
-      <div>
-        <button onclick="changeQuantity(${item.id}, -1)">-</button>
-        <span>${item.quantity}</span>
-        <button onclick="changeQuantity(${item.id}, 1)">+</button>
-      </div>
-      <span>${item.price * item.quantity} kr</span>
-    `;
+  <span>${item.name}</span>
+  <span>${item.price} kr/st</span>
+  <div>
+    <button onclick="changeQuantity(${item.id}, -1, event)">-</button>
+    <span>${item.quantity}</span>
+    <button onclick="changeQuantity(${item.id}, 1, event)">+</button>
+  </div>
+  <span>${item.price * item.quantity} kr</span>
+`;
 
     cartList.appendChild(listItem);
     totalPrice += item.price * item.quantity;
@@ -221,8 +223,6 @@ function updateCart() {
 
   if (cartCount) {
     cartCount.textContent = totalItems;
-  } else {
-    console.error("cartCount element not found!");
   }
 
   if (Object.keys(cart).length === 0) {
@@ -237,39 +237,38 @@ function updateCart() {
   }
 }
 
-function changeQuantity(id, change) {
-  event.stopPropagation();
-  if (cart[id]) {
-    cart[id].quantity += change;
-    if (cart[id].quantity <= 0) {
-      delete cart[id];
-    }
-    updateCartButton(id);
-    updateCart();
-  }
-  // else {
-  //   console.error(`Produkt med ID ${id} finns inte i kundvagnen.`);
-  // }
-}
-
-
-function updateCartQuantity(id, change) {
+function addToCart(id, price, type) {
   const product = [...services.Kurser, ...Object.values(products).flat()].find(
     (item) => item.id === id
   );
 
   if (product) {
-    cartItemsCount[id] = (cartItemsCount[id] || 0) + change;
-
-    if (cartItemsCount[id] <= 0) {
-      cartItemsCount[id] = 0;
-      cart.splice(
-        cart.findIndex((item) => item.name === product.name),
-        1
-      );
-    } else if (change > 0) {
-      cart.push({ name: product.name, price: product.price });
+    if (cart[id]) {
+      cart[id].quantity += 1;
+    } else {
+      cart[id] = {
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        quantity: 1,
+      };
     }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartButton(id);
+    updateCart();
+  }
+}
+
+function changeQuantity(id, change) {
+  event.stopPropagation();
+
+  if (cart[id]) {
+    cart[id].quantity += change;
+    if (cart[id].quantity <= 0) {
+      delete cart[id];
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
     updateCartButton(id);
     updateCart();
   }
@@ -280,32 +279,13 @@ function updateCartButton(id) {
     `#service-cartBtn-${id}, #product-cartBtn-${id}`
   );
   if (button) {
-    const itemCount = cartItemsCount[id] || 0;
+    const itemCount = cart[id] ? cart[id].quantity : 0;
     button.textContent =
       itemCount > 0
         ? `${itemCount} stycken i kundvagnen`
         : "Lägg till i kundvagn";
   } else {
     console.error(`Button with ID cartBtn-${id} not found.`);
-  }
-}
-
-function addToCart(id, price, type) {
-  const product = [...services.Kurser, ...Object.values(products).flat()].find(
-    (item) => item.id === id
-  );
-
-  if (product) {
-    if (cart[id]) {
-      cart[id].quantity += 1;
-    } else {
-     cart[id] = { id: product.id, name: product.name, price: product.price, quantity: 1 };
-
-    }
-    cartItemsCount[id] = (cartItemsCount[id] || 0) + 1;
-
-    updateCartButton(id);
-    updateCart();
   }
 }
 

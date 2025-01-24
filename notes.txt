@@ -1,7 +1,0 @@
-
-
-kolla lighthouse generate report
-
-favicon
-
-justera antal i kundvagn
