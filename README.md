@@ -1,5 +1,7 @@
 # Labb 1 - Webbutveckling med .NET
+
 ## Uppdraget
+
 Ett lokalt företag har kontaktat dig och erbjudit dig möjligheten att skapa
 deras nya hemsida. De vill ha en hemsida med tre delar. Navigation ska ske
 genom en navbar eller liknande menysystem.
@@ -16,6 +18,7 @@ Uppdraget innebär ett ta fram ett förslag åt företaget och måste inte
 innehålla någon specifik text eller exakta kontaktuppgifter.
 
 Förslag på företag:
+
 - Frisörsalong
 - Tjänster som Herrklippning, Hårfärgning etc.
 - Konditori/Bageri
@@ -30,7 +33,9 @@ Förslag på företag:
 - Tjänster som tex kloklipp, pälsvård osv.
 
 ## Bedömning
+
 ### Krav för G
+
 Alla delar beskrivna ovan finns med.
 Koden skall finnas på Github.
 Sidan är uppdelad på ett strukturerat sätt med minst tre HTML- och
@@ -44,3 +49,17 @@ Hemsidan har ett färsgschema med minst 3 färger (utöver vitt och svart).
 Skapa responsivitet med Bootstrap (eller liknande css-bibliotek).
 På sidan "Om Oss" Ska man kunna se adressen i en inbakad Google
 Maps-modul.
+
+![Bild på landingpage](https://github.com/TantBella/Lab2Csharp/blob/main/shoppingcart.png)
+
+![Bild på landingpage](https://github.com/TantBella/Lab2Csharp/blob/main/shoppingcart.png)
+
+![Bild på produktsida](https://github.com/TantBella/Lab2Csharp/blob/main/shoppingcart.png)
+
+![Bild på produktsida](https://github.com/TantBella/Lab2Csharp/blob/main/shoppingcart.png)
+
+![Bild på kassa](https://github.com/TantBella/Lab2Csharp/blob/main/shoppingcart.png)
+
+![Bild på om oss](https://github.com/TantBella/Lab2Csharp/blob/main/shoppingcart.png)
+
+![Bild på om oss](https://github.com/TantBella/Lab2Csharp/blob/main/shoppingcart.png)
